@@ -25,3 +25,14 @@ char **char_tab(int ac, char **av, t_stack **a)
 	}
 	return(tmp);
 }
+
+int ft_stack_len(char **stack)
+{
+	int	len;
+
+	len = 0;
+	while(stack[len])
+		len++;
+	return (len);
+}
+

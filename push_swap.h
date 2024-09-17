@@ -34,7 +34,7 @@
 
 typedef struct s_stack
 {
-	int	*stack;
+	char	**stack;
 	int rev;
 } t_stack;
 
@@ -57,7 +57,11 @@ int ft_print_error(void);
 
 // UTILS
 char **char_tab(int ac, char **av, t_stack **a);
+int	ft_revs_rotate_array(char **stack);
+int	ft_stack_len(char **stack);
 
 // SWAP CMD
-int	ft_swap_position(int *stack);
+int	ft_swap_position(char **stack);
+int	ft_rotate_array(char **stack);
+int	ft_push_elem(char **stack_a, char **stack_b);
 #endif

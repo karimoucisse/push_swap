@@ -4,6 +4,7 @@
 int ft_fill_stack_a(int ac, char **av, t_stack **a)
 {
 	char **tmp;
+	int num;
 	int i;
 
 	tmp = char_tab(ac, av, a);
@@ -12,7 +13,8 @@ int ft_fill_stack_a(int ac, char **av, t_stack **a)
 	i = 0;
 	while (tmp[i])
 	{
-		(*a)->stack[i] = ft_atoi(tmp[i]);
+		num = ft_atoi(tmp[i]);
+		(*a)->stack[i] = ft_itoa(num);
 		if (ft_strlen(tmp[i]) > 1 && (*a)->stack[i] == 0)
 			return (0);
 		if ((ft_strlen(tmp[i]) == 1 && tmp[i][0] != 0) && (*a)->stack[i] == 0)
