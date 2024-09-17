@@ -47,7 +47,13 @@ int ft_check_args(char **av, int ac, int *stack);
 int ft_check_val(char *av, int ac);
 int ft_check_sign(char *av);
 int ft_check_char(char **av, int ac);
-// HANDLE STRUCT
-t_stack *init_struct(char **av, int ac);
 
+// HANDLE STRUCT
+int init_struct(int ac, char **av, t_stack **a, t_stack **b);
+
+// HANDLE ERROR
+int ft_printf_error(void);
+
+// UTILS
+char **char_tab(int ac, char **av, t_stack **a);
 #endif
