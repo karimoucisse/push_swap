@@ -19,6 +19,7 @@ int main(int ac, char **av)
 		return (ft_print_error());
 	if (!init_struct(ac, av, &stack_a, &stack_b))
 		return (ft_print_error());
-	if (!ft_sort_stack())
-		return (ft_print_error());
+	// if (!ft_sort_stack())
+	// 	return (ft_print_error());
+
 }

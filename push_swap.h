@@ -57,4 +57,7 @@ int ft_print_error(void);
 
 // UTILS
 char **char_tab(int ac, char **av, t_stack **a);
+
+// SWAP CMD
+int	ft_swap_position(int *stack);
 #endif
