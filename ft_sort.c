@@ -18,19 +18,12 @@ int ft_find_range(int num, char **stack_b)
 	while(stack_b[i])
 	{
 		if(num > ft_atoi(stack_b[i]) && (num > min || min > ft_atoi(stack_b[i])))
-		{
-			min_p = i;
 			min = ft_atoi(stack_b[i]);
-		}
-		if(num < ft_atoi(stack_b[i]) && max > ft_atoi(stack_b[i]))
-		{
-			min_p = i;
+		if(max < ft_atoi(stack_b[i]))
 			max = ft_atoi(stack_b[i]);
-		}
 		i++;
 	}
-	// if((ft_stack_len(stack_b) / 2) > min)
-
-	printf("min = %d, max = %d\n", min, max);
-	return (0);
+	if(num > max || min > num)
+		return (max);
+	return (min);
 }

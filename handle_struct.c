@@ -41,5 +41,7 @@ int init_struct(int ac, char **av, t_stack *a, t_stack *b)
 		return (0);
 	if (!ft_fill_stack_a(ac, av, a))
 		return (0);
+	b->stack[len] = 0;
+	a->stack[len] = 0;
 	return (1);
 }

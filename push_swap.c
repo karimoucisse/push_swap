@@ -9,16 +9,25 @@ int ft_sort_stack(t_stack *a, t_stack *b)
 	i = 0;
 	ft_push_elem(a->stack, b->stack);
 	ft_push_elem(a->stack, b->stack);
-
+	ft_push_elem(a->stack, b->stack);
+	ft_push_elem(a->stack, b->stack);
+	ft_push_elem(a->stack, b->stack);
+	ft_push_elem(a->stack, b->stack);
+	ft_push_elem(a->stack, b->stack);
 	range = 0;
-	ft_find_range(atoi(a->stack[0]), b->stack);
-	printf("a	b\n\n");
-	while (a->stack[i] && ft_stack_len(a->stack))
+	// ft_find_range(atoi(a->stack[0]), b->stack);
+	printf("range = %d\n\n\n", ft_find_range(atoi(a->stack[0]), b->stack));
+
+	while (a->stack[i])
 	{
-		printf("%s	", a->stack[i]);
-		if (b->stack[i] && ft_stack_len(b->stack))
-			printf("%s", b->stack[i]);
-		printf("\n");
+		printf("%s, ", a->stack[i]);
+		i++;
+	}
+	printf("\n");
+	i = 0;
+	while (b->stack[i])
+	{
+		printf("%s, ", b->stack[i]);
 		i++;
 	}
 	return (1);
