@@ -64,4 +64,7 @@ int	ft_stack_len(char **stack);
 int	ft_swap_position(char **stack);
 int	ft_rotate_array(char **stack);
 int	ft_push_elem(char **stack_a, char **stack_b);
+
+// FT_SORT
+int ft_find_range(int num, char **stack_b);
 #endif
