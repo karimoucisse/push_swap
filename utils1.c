@@ -14,7 +14,7 @@ char **char_tab(int ac, char **av, t_stack **a)
 		tmp = malloc(sizeof(char *) * (ac));
 		while(i < ac - 1)
 		{
-			tmp[i] = strdup(av[i + 1]);
+			tmp[i] = ft_strdup(av[i + 1]);
 			if (!tmp[i])
 			{
 				return(0);

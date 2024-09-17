@@ -50,9 +50,10 @@ int ft_check_char(char **av, int ac);
 
 // HANDLE STRUCT
 int init_struct(int ac, char **av, t_stack **a, t_stack **b);
+int ft_fill_stack_a(int ac, char **av, t_stack **a);
 
 // HANDLE ERROR
-int ft_printf_error(void);
+int ft_print_error(void);
 
 // UTILS
 char **char_tab(int ac, char **av, t_stack **a);
