@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-char **char_tab(int ac, char **av, t_stack **a)
+char **char_tab(int ac, char **av)
 {
 	int i;
 	char **tmp;
@@ -31,7 +31,7 @@ int ft_stack_len(char **stack)
 	int	len;
 
 	len = 0;
-	while(stack[len])
+	while(stack[len] != 0)
 		len++;
 	return (len);
 }

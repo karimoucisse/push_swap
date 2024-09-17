@@ -31,6 +31,6 @@ int ft_find_range(int num, char **stack_b)
 	}
 	// if((ft_stack_len(stack_b) / 2) > min)
 
-	// printf("min = %d, max = %d\n", min, max);
+	printf("min = %d, max = %d\n", min, max);
 	return (0);
 }
