@@ -16,6 +16,7 @@ int ft_sort_stack(t_stack *a, t_stack *b)
 	ft_push_elem(a->stack, b->stack);
 	range = 0;
 	// ft_find_range(atoi(a->stack[0]), b->stack);
+	printf("num = %s\n", a->stack[0]);
 	printf("range = %d\n\n\n", ft_find_range(atoi(a->stack[0]), b->stack));
 
 	while (a->stack[i])
