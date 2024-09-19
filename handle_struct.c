@@ -24,10 +24,9 @@ int ft_fill_stack_a(int ac, char **av, t_stack *a)
 	return (1);
 }
 
-int init_struct(int ac, char **av, t_stack *a, t_stack *b)
+int init_stack_struct(int ac, char **av, t_stack *a, t_stack *b)
 {
 	int len;
-
 
 	if (ac == 2)
 		len = ft_strlen(av[1]);
@@ -44,4 +43,42 @@ int init_struct(int ac, char **av, t_stack *a, t_stack *b)
 	b->stack[len] = 0;
 	a->stack[len] = 0;
 	return (1);
+}
+
+int init_cmd_struct(t_cmd **cmd)
+{
+	*cmd = malloc(sizeof(t_cmd));
+	if (!cmd)
+		return (0);
+	(*cmd)->a_pst = 0;
+	(*cmd)->b_pst = 0;
+	(*cmd)->sb = 0;
+	(*cmd)->sa = 0;
+	(*cmd)->ss = 0;
+	(*cmd)->top_a_pst = 0;
+	(*cmd)->top_b_pst = 0;
+	(*cmd)->ra = 0;
+	(*cmd)->rb = 0;
+	(*cmd)->rr = 0;
+	(*cmd)->rra = 0;
+	(*cmd)->rrb = 0;
+	(*cmd)->rrr = 0;
+	(*cmd)->total_count = 0;
+	(*cmd)->cmd_count = 0;
+	return (1);
+}
+
+void reset_cmd_struct(t_cmd **cmd)
+{
+	(*cmd)->a_pst = 0;
+	(*cmd)->b_pst = 0;
+	(*cmd)->sb = 0;
+	(*cmd)->sa = 0;
+	(*cmd)->ss = 0;
+	(*cmd)->ra = 0;
+	(*cmd)->rb = 0;
+	(*cmd)->rr = 0;
+	(*cmd)->rra = 0;
+	(*cmd)->rrb = 0;
+	(*cmd)->rrr = 0;
 }

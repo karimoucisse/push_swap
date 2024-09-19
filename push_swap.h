@@ -38,6 +38,25 @@ typedef struct s_stack
 	int rev;
 } t_stack;
 
+typedef struct s_cmd
+{
+	int a_pst;
+	int b_pst;
+	int top_a_pst;
+	int top_b_pst;
+	int sb;
+	int sa;
+	int ss;
+	int ra;
+	int rb;
+	int rr;
+	int rra;
+	int rrb;
+	int rrr;
+	int total_count;
+	int cmd_count;
+} t_cmd;
+
 
 // MAIN
 
@@ -49,22 +68,27 @@ int ft_check_sign(char *av);
 int ft_check_char(char **av, int ac);
 
 // HANDLE STRUCT
-int init_struct(int ac, char **av, t_stack *a, t_stack *b);
+int init_stack_struct(int ac, char **av, t_stack *a, t_stack *b);
 int ft_fill_stack_a(int ac, char **av, t_stack *a);
+int init_cmd_struct(t_cmd **cmd);
+void reset_cmd_struct(t_cmd **cmd);
 
 // HANDLE ERROR
 int ft_print_error(void);
 
 // UTILS
 char **char_tab(int ac, char **av);
-int	ft_revs_rotate_array(char **stack);
 int	ft_stack_len(char **stack);
+int ft_find_position(int num, char **stack);
 
 // SWAP CMD
 int	ft_swap_position(char **stack);
 int	ft_rotate_array(char **stack);
+int	ft_revs_rotate_array(char **stack);
 int	ft_push_elem(char **stack_a, char **stack_b);
 
 // FT_SORT
 int ft_find_range(int num, char **stack_b);
+void cmd_calc(int pst, char **stack, char l, t_cmd *cmd_stc);
+int cmd_calc2(t_cmd *cmd_stc);
 #endif

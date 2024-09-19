@@ -36,3 +36,13 @@ int ft_stack_len(char **stack)
 	return (len);
 }
 
+int ft_find_position(int num, char **stack)
+{
+	int	i;
+
+	i = 0;
+	while(ft_atoi(stack[i]) != num)
+		i++;
+	return (i);
+}
+

@@ -25,7 +25,6 @@ int ft_find_range(int num, char **stack_b)
 	int	max;
 	int i;
 
-
 	ft_find_min_and_max(stack_b, &min, &max);
 	i = 0;
 	len = ft_stack_len(stack_b);
@@ -38,4 +37,55 @@ int ft_find_range(int num, char **stack_b)
 		i++;
 	}
 	return (max);
+}
+
+void cmd_calc(int pst, char **stack, char l, t_cmd *cmd_stc)
+{
+	if(l == 'a')
+	{
+		if(pst == 0)
+			cmd_stc->sa = 1;
+		else if(pst <= ft_stack_len(stack) / 2)
+			cmd_stc->ra = cmd_stc->a_pst;
+		else
+			cmd_stc->rra = ft_stack_len(stack) - cmd_stc->a_pst;
+	}
+	else
+	{
+		if(pst == 0)
+			cmd_stc->sb = 1;
+		else if(pst <= ft_stack_len(stack) / 2)
+			cmd_stc->rb = cmd_stc->b_pst;
+		else
+			cmd_stc->rrb = ft_stack_len(stack) - cmd_stc->b_pst;
+	}
+}
+
+int cmd_calc2(t_cmd *cmd_stc)
+{
+	if(cmd_stc->rb > cmd_stc->ra)
+	{
+		cmd_stc->rr = cmd_stc->ra;
+		cmd_stc->rb = cmd_stc->rb - cmd_stc->ra;
+		cmd_stc->ra = 0;
+	}
+	if(cmd_stc->ra > cmd_stc->rb)
+	{
+		cmd_stc->rr = cmd_stc->rb;
+		cmd_stc->ra = cmd_stc->ra - cmd_stc->rb;
+		cmd_stc->rb = 0;
+	}
+	if(cmd_stc->rrb > cmd_stc->rra)
+	{
+		cmd_stc->rrr = cmd_stc->rra;
+		cmd_stc->rrb = cmd_stc->rrb - cmd_stc->rra;
+		cmd_stc->rra = 0;
+	}
+	if(cmd_stc->rra > cmd_stc->rrb)
+	{
+		cmd_stc->rrr = cmd_stc->rrb;
+		cmd_stc->rra = cmd_stc->rra - cmd_stc->rrb;
+		cmd_stc->rrb = 0;
+	}
+	return (cmd_stc->rr + cmd_stc->ra + cmd_stc->rb + cmd_stc->rrr + cmd_stc->rra + cmd_stc->rrb);
 }
