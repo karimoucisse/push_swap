@@ -28,15 +28,19 @@ int ft_find_range(int num, char **stack_b)
 	ft_find_min_and_max(stack_b, &min, &max);
 	i = 0;
 	len = ft_stack_len(stack_b);
-	if (num < min || num > max)
+	if (num < min)
 		return (min);
+	if(num > max)
+		return (max);
 	while (stack_b[i])
 	{
-		if(max != ft_atoi(stack_b[i]) && max > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > num)
-			max = ft_atoi(stack_b[i]);
+		// if(max != ft_atoi(stack_b[i]) && max > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > num)
+		// 	max = ft_atoi(stack_b[i]);
+		if(num > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > min)
+			min = ft_atoi(stack_b[i]);
 		i++;
 	}
-	return (max);
+	return (min);
 }
 
 void cmd_calc(int pst, char **stack, char l, t_cmd *cmd_stc)

@@ -10,31 +10,46 @@ int ft_sort_stack(t_stack *a, t_stack *b)
 
 	i = 0;
 	cmd_count = 0;
-	if(!init_cmd_struct(&cmd_stc))
+	if (!init_cmd_struct(&cmd_stc))
 		return (0);
 	cmd_stc->total_count += ft_push_elem(a->stack, b->stack);
 	cmd_stc->total_count += ft_push_elem(a->stack, b->stack);
-	while(i < ft_stack_len(a->stack))
-	{
-		cmd_stc->a_pst = i;
-		cmd_calc(cmd_stc->a_pst, a->stack, 'a', cmd_stc);
-		range = ft_find_range(atoi(a->stack[i]), b->stack);
-		cmd_stc->b_pst = ft_find_position(range, b->stack);
-		cmd_calc(cmd_stc->b_pst, b->stack, 'b', cmd_stc);
-		cmd_stc->cmd_count = cmd_calc2(cmd_stc);
-		if(cmd_count > cmd_stc->cmd_count)
-		{
-			cmd_count = cmd_stc->cmd_count;
-			cmd_stc->top_a_pst = cmd_stc->a_pst;
-			cmd_stc->top_b_pst = cmd_stc->b_pst;
-		}
-		reset_cmd_struct(&cmd_stc);
-		i++;
-	}
+	ft_find_best_position(cmd_stc, a->stack, b->stack);
+	ft_exec_cmd(cmd_stc, a->stack, b->stack);
 	return (1);
 }
 
-
+int ft_exec_cmd(t_cmd *cmd_stc, char **stack_a, char **stack_b)
+{
+	if (cmd_stc->sa)
+		ft_swap_position(stack_a);
+	if (cmd_stc->sb)
+		ft_swap_position(stack_b);
+	if (cmd_stc->ss)
+	{
+		ft_swap_position(stack_a);
+		ft_swap_position(stack_b);
+	}
+	if (cmd_stc->rr)
+	{
+		ft_rotate_array(stack_a);
+		ft_rotate_array(stack_b);
+	}
+	if (cmd_stc->rrr)
+	{
+		ft_revs_rotate_array(stack_a);
+		ft_revs_rotate_array(stack_b);
+	}
+	if (cmd_stc->ra)
+		ft_rotate_array(stack_a);
+	if (cmd_stc->rb)
+		ft_rotate_array(stack_b);
+	if (cmd_stc->rra)
+		ft_revs_rotate_array(stack_a);
+	if (cmd_stc->rrb)
+		ft_revs_rotate_array(stack_b);
+	return (1);
+}
 
 int main(int ac, char **av)
 {
