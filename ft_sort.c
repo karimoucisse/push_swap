@@ -18,7 +18,8 @@ void ft_find_min_and_max(char **stack_b, int *min, int *max)
 	}
 }
 
-int ft_find_range(int num, char **stack_b)
+// b to a
+int ft_find_range2(int num, char **stack_b)
 {
 	int	len;
 	int	min;
@@ -28,14 +29,36 @@ int ft_find_range(int num, char **stack_b)
 	ft_find_min_and_max(stack_b, &min, &max);
 	i = 0;
 	len = ft_stack_len(stack_b);
-	if (num < min)
+	if(num > max || num < min)
 		return (min);
-	if(num > max)
+	while (stack_b[i])
+	{
+		if(max != ft_atoi(stack_b[i]) && max > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > num)
+			max = ft_atoi(stack_b[i]);
+		if(num > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > min)
+			min = ft_atoi(stack_b[i]);
+		i++;
+	}
+	return (max);
+}
+
+// a to b
+int ft_find_range1(int num, char **stack_b)
+{
+	int	len;
+	int	min;
+	int	max;
+	int i;
+
+	ft_find_min_and_max(stack_b, &min, &max);
+	i = 0;
+	len = ft_stack_len(stack_b);
+	if(num > max || num < min)
 		return (max);
 	while (stack_b[i])
 	{
-		// if(max != ft_atoi(stack_b[i]) && max > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > num)
-		// 	max = ft_atoi(stack_b[i]);
+		if(max != ft_atoi(stack_b[i]) && max > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > num)
+			max = ft_atoi(stack_b[i]);
 		if(num > ft_atoi(stack_b[i]) && ft_atoi(stack_b[i]) > min)
 			min = ft_atoi(stack_b[i]);
 		i++;
@@ -47,49 +70,50 @@ void cmd_calc(int pst, char **stack, char l, t_cmd *cmd_stc)
 {
 	if(l == 'a')
 	{
-		if(pst == 0)
-			cmd_stc->sa = 1;
+		if(pst == 0 || pst == 1)
+			cmd_stc->sa = pst;
 		else if(pst <= ft_stack_len(stack) / 2)
-			cmd_stc->ra = cmd_stc->a_pst;
+			cmd_stc->ra = pst;
 		else
-			cmd_stc->rra = ft_stack_len(stack) - cmd_stc->a_pst;
+			cmd_stc->rra = ft_stack_len(stack) - pst;
 	}
 	else
 	{
-		if(pst == 0)
-			cmd_stc->sb = 1;
+		if(pst == 1)
+			cmd_stc->rb = 1;
 		else if(pst <= ft_stack_len(stack) / 2)
-			cmd_stc->rb = cmd_stc->b_pst;
+			cmd_stc->rb = pst;
 		else
-			cmd_stc->rrb = ft_stack_len(stack) - cmd_stc->b_pst;
+			cmd_stc->rrb = ft_stack_len(stack) - pst;
 	}
 }
 
-int cmd_calc2(t_cmd *cmd_stc)
+int cmd_calc2(t_cmd *c)
 {
-	if(cmd_stc->rb > cmd_stc->ra)
+	if(c->rb >= c->ra && c->ra != 0)
 	{
-		cmd_stc->rr = cmd_stc->ra;
-		cmd_stc->rb = cmd_stc->rb - cmd_stc->ra;
-		cmd_stc->ra = 0;
+		c->rr = c->ra;
+		c->rb = c->rb - c->ra;
+		c->ra = 0;
 	}
-	if(cmd_stc->ra > cmd_stc->rb)
+	if(c->ra > c->rb && c->rb != 0)
 	{
-		cmd_stc->rr = cmd_stc->rb;
-		cmd_stc->ra = cmd_stc->ra - cmd_stc->rb;
-		cmd_stc->rb = 0;
+		c->rr = c->rb;
+		c->ra = c->ra - c->rb;
+		c->rb = 0;
 	}
-	if(cmd_stc->rrb > cmd_stc->rra)
+	if(c->rrb >= c->rra && c->rra != 0)
 	{
-		cmd_stc->rrr = cmd_stc->rra;
-		cmd_stc->rrb = cmd_stc->rrb - cmd_stc->rra;
-		cmd_stc->rra = 0;
+		c->rrr = c->rra;
+		c->rrb = c->rrb - c->rra;
+		c->rra = 0;
 	}
-	if(cmd_stc->rra > cmd_stc->rrb)
+	if(c->rra > c->rrb && c->rrb != 0)
 	{
-		cmd_stc->rrr = cmd_stc->rrb;
-		cmd_stc->rra = cmd_stc->rra - cmd_stc->rrb;
-		cmd_stc->rrb = 0;
+		c->rrr = c->rrb;
+		c->rra = c->rra - c->rrb;
+		c->rrb = 0;
 	}
-	return (cmd_stc->rr + cmd_stc->ra + cmd_stc->rb + cmd_stc->rrr + cmd_stc->rra + cmd_stc->rrb);
+	return (c->rr + c->ra + c->rb + c->rrr + c->rra + c->rrb +
+	c->ss + c->sa + c->sb);
 }

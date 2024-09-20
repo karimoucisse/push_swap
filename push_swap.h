@@ -60,6 +60,10 @@ typedef struct s_cmd
 // MAIN
 int ft_sort_stack(t_stack *a, t_stack *b);
 int ft_exec_cmd(t_cmd *cmd_stc, char **stack_a, char **stack_b);
+int ft_sort_tester(char **stack);
+void get_ascending_order_stack(t_cmd *cmd_stc, char **stack);
+void get_descending_order_stack(t_cmd *cmd_stc, char **stack);
+
 // ARGS CHECKER
 int ft_check_espace(char *av, int ac);
 int ft_check_args(char **av, int ac, int *stack);
@@ -80,7 +84,8 @@ int ft_print_error(void);
 char **char_tab(int ac, char **av);
 int ft_stack_len(char **stack);
 int ft_find_position(int num, char **stack);
-void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b);
+void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b, char c);
+
 // SWAP CMD
 int ft_swap_position(char **stack);
 int ft_rotate_array(char **stack);
@@ -88,7 +93,10 @@ int ft_revs_rotate_array(char **stack);
 int ft_push_elem(char **stack_a, char **stack_b);
 
 // FT_SORT
-int ft_find_range(int num, char **stack_b);
+int ft_find_range1(int num, char **stack_b);
+int ft_find_range2(int num, char **stack_b);
 void cmd_calc(int pst, char **stack, char l, t_cmd *cmd_stc);
 int cmd_calc2(t_cmd *cmd_stc);
+void ft_find_min_and_max(char **stack_b, int *min, int *max);
+
 #endif

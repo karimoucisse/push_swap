@@ -46,7 +46,7 @@ int ft_find_position(int num, char **stack)
 	return (i);
 }
 
-void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b)
+void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b, char c)
 {
 	int i;
 	int range;
@@ -58,7 +58,10 @@ void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b)
 	{
 		cmd_stc->a_pst = i;
 		cmd_calc(cmd_stc->a_pst, stack_a, 'a', cmd_stc);
-		range = ft_find_range(ft_atoi(stack_a[i]), stack_b);
+		if(c == 'b')
+			range = ft_find_range1(ft_atoi(stack_a[i]), stack_b);
+		else
+			range = ft_find_range2(ft_atoi(stack_a[i]), stack_b);
 		cmd_stc->b_pst = ft_find_position(range, stack_b);
 		cmd_calc(cmd_stc->b_pst, stack_b, 'b', cmd_stc);
 		cmd_stc->cmd_count = cmd_calc2(cmd_stc);
