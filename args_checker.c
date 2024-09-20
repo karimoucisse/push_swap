@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   args_checker.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/20 18:45:20 by kcisse            #+#    #+#             */
+/*   Updated: 2024/09/20 18:45:21 by kcisse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "push_swap.h"
 
@@ -19,27 +31,6 @@ int ft_check_espace(char *av, int ac)
 		if (i > 1)
 			return (0);
 		av++;
-	}
-	return (1);
-}
-
-int ft_check_args(char **av, int ac, int *stack)
-{
-	int i;
-	int j;
-	i = 1;
-	while (av[i])
-	{
-		if (!ft_check_espace(av[i], ac))
-			return (0);
-		j = 0;
-		while (av[i][j])
-		{
-			if(!ft_strchr("+-0123456789", av[i][j]))
-				return (0);
-			j++;
-		}
-		i++;
 	}
 	return (1);
 }

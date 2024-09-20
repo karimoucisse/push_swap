@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/20 18:45:13 by kcisse            #+#    #+#             */
+/*   Updated: 2024/09/20 18:45:14 by kcisse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "push_swap.h"
 
@@ -7,6 +19,20 @@ void get_descending_order_stack(t_cmd *cmd_stc, char **stack)
 	int max;
 	ft_find_min_and_max(stack, &min, &max);
 	while (ft_atoi(stack[ft_stack_len(stack) - 1]) != min)
+	{
+		if (ft_find_position(min, stack) >= ft_stack_len(stack) / 2)
+			cmd_stc->total_count += ft_revs_rotate_array(stack, "RRB\n");
+		else
+			cmd_stc->total_count += ft_rotate_array(stack, "RB\n");
+	}
+}
+
+void get_ascending_order_stack(t_cmd *cmd_stc, char **stack)
+{
+	int min;
+	int max;
+	ft_find_min_and_max(stack, &min, &max);
+	while (ft_atoi(stack[0]) != min)
 	{
 		if (ft_find_position(min, stack) >= ft_stack_len(stack) / 2)
 			cmd_stc->total_count += ft_revs_rotate_array(stack, "RRB\n");
@@ -44,7 +70,6 @@ int ft_sort_tester(char **stack)
 
 int ft_sort_stack(t_stack *a, t_stack *b)
 {
-	int range;
 	int i;
 	int cmd_count;
 	t_cmd *cmd_stc;
@@ -73,6 +98,7 @@ int ft_sort_stack(t_stack *a, t_stack *b)
 		reset_cmd_struct(&cmd_stc);
 		i++;
 	}
+	get_ascending_order_stack(cmd_stc, a->stack);
 	return (cmd_stc->total_count);
 }
 
@@ -152,20 +178,6 @@ int main(int ac, char **av)
 	total = ft_sort_stack(stack_a, stack_b);
 	if (!total)
 		return (ft_print_error());
-	if(ft_sort_tester(stack_a->stack) && ft_stack_len(stack_b->stack) == 0)
-		printf("OK\n");
-	else
+	if(!ft_sort_tester(stack_a->stack) || ft_stack_len(stack_b->stack) != 0)
 		return (ft_print_error());
-	// printf("Total = %d\n", total);
-	// printf("a	b\n\n");
-	// while (stack_a->stack[i] || stack_b->stack[i])
-	// {
-	// 	if (stack_a->stack[i])
-	// 		printf("%s", stack_a->stack[i]);
-	// 	printf("	");
-	// 	if (stack_b->stack[i])
-	// 		printf("%s", stack_b->stack[i]);
-	// 	printf("\n");
-	// 	i++;
-	// }
 }

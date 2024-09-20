@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/20 18:45:46 by kcisse            #+#    #+#             */
+/*   Updated: 2024/09/20 18:45:47 by kcisse           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "push_swap.h"
 
@@ -18,7 +30,6 @@ void ft_find_min_and_max(char **stack_b, int *min, int *max)
 	}
 }
 
-// b to a
 int ft_find_range2(int num, char **stack_b)
 {
 	int	len;
@@ -42,7 +53,6 @@ int ft_find_range2(int num, char **stack_b)
 	return (max);
 }
 
-// a to b
 int ft_find_range1(int num, char **stack_b)
 {
 	int	len;
