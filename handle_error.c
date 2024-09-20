@@ -6,14 +6,14 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:45:53 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:45:54 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/09/20 18:59:16 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int ft_print_error(void)
+int	ft_print_error(void)
 {
 	write(2, "Error\n", 6);
 	return (1);

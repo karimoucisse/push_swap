@@ -6,16 +6,16 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:45:20 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:45:21 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/09/20 18:55:21 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int ft_check_espace(char *av, int ac)
+int	ft_check_espace(char *av, int ac)
 {
-	int i;
+	int	i;
 
 	if (av[0] == ' ' || av[ft_strlen(av) - 1] == ' ')
 		return (0);
@@ -23,7 +23,7 @@ int ft_check_espace(char *av, int ac)
 	while (*av)
 	{
 		if (*av == ' ' && ac > 2)
-			return(0);
+			return (0);
 		else if (*av == ' ')
 			i++;
 		else
@@ -35,39 +35,39 @@ int ft_check_espace(char *av, int ac)
 	return (1);
 }
 
-int ft_check_val(char *av, int ac)
+int	ft_check_val(char *av, int ac)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (av[i])
 	{
-		if(!ft_strchr("+-0123456789", av[i]) && ac > 2)
+		if (!ft_strchr("+-0123456789", av[i]) && ac > 2)
 			return (0);
-		if(!ft_strchr("+-0123456789 ", av[i]) && ac == 2)
+		if (!ft_strchr("+-0123456789 ", av[i]) && ac == 2)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int ft_check_sign(char *av)
+int	ft_check_sign(char *av)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (av[i])
 	{
-		if((av[i] == '+' || av[i] == '-') && !av[i + 1])
+		if ((av[i] == '+' || av[i] == '-') && !av[i + 1])
 			return (0);
-		if((av[i] == '+' || av[i] == '-') && av[i + 1])
+		if ((av[i] == '+' || av[i] == '-') && av[i + 1])
 		{
-			if(!ft_strchr("0123456789", av[i + 1]))
+			if (!ft_strchr("0123456789", av[i + 1]))
 				return (0);
 		}
-		if((av[i] == '+' || av[i] == '-') && av[i - 1])
+		if ((av[i] == '+' || av[i] == '-') && av[i - 1])
 		{
-			if(ft_strchr("0123456789", av[i - 1]))
+			if (ft_strchr("0123456789", av[i - 1]))
 				return (0);
 		}
 		i++;
@@ -75,13 +75,12 @@ int ft_check_sign(char *av)
 	return (1);
 }
 
-int ft_check_char(char **av, int ac)
+int	ft_check_char(char **av, int ac)
 {
-
-	int i;
+	int	i;
 
 	i = 1;
-	while(av[i])
+	while (av[i])
 	{
 		if (!ft_check_espace(av[i], ac))
 			return (0);
