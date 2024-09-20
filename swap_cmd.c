@@ -1,7 +1,7 @@
 #include "libft.h"
 #include "push_swap.h"
 
-int	ft_swap_position(char **stack)
+int	ft_swap_position(char **stack, char *cmd)
 {
 	char	*copy;
 
@@ -10,10 +10,11 @@ int	ft_swap_position(char **stack)
 		return (0);
 	stack[0] = stack[1];
 	stack[1] = copy;
+	write(1, cmd, 3);
 	return (1);
 }
 
-int	ft_push_elem(char **stack_a, char **stack_b)
+int	ft_push_elem(char **stack_a, char **stack_b, char *cmd)
 {
 	int		i;
 	char	*cpy_a;
@@ -41,10 +42,11 @@ int	ft_push_elem(char **stack_a, char **stack_b)
 		}
 		stack_b[i] = cpy_a;
 	}
+	write(1, cmd, 3);
 	return (1);
 }
 
-int	ft_rotate_array(char **stack)
+int	ft_rotate_array(char **stack, char *cmd)
 {
 	int		i;
 	char	*cpy;
@@ -57,10 +59,20 @@ int	ft_rotate_array(char **stack)
 		i++;
 	}
 	stack[i - 1] = cpy;
+	if(cmd)
+		write(1, cmd, 3);
 	return (1);
 }
 
-int	ft_revs_rotate_array(char **stack)
+int	ft_rotate_arrays(char **stack_a, char **stack_b)
+{
+	ft_rotate_array(stack_a, NULL);
+	ft_rotate_array(stack_b, NULL);
+	write(1, "RR\n", 3);
+	return (1);
+}
+
+int	ft_revs_rotate_array(char **stack, char *cmd)
 {
 	int		i;
 	char	*cpy;
@@ -73,5 +85,15 @@ int	ft_revs_rotate_array(char **stack)
 		i--;
 	}
 	stack[0] = cpy;
+	if(cmd)
+		write(1, cmd, 4);
+	return (1);
+}
+
+int	ft_revs_rotate_arrays(char **stack_a, char **stack_b)
+{
+	ft_revs_rotate_array(stack_a, NULL);
+	ft_revs_rotate_array(stack_b, NULL);
+	write(1, "RRR\n", 4);
 	return (1);
 }

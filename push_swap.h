@@ -87,10 +87,12 @@ int ft_find_position(int num, char **stack);
 void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b, char c);
 
 // SWAP CMD
-int ft_swap_position(char **stack);
-int ft_rotate_array(char **stack);
-int ft_revs_rotate_array(char **stack);
-int ft_push_elem(char **stack_a, char **stack_b);
+int ft_swap_position(char **stack, char *cmd);
+int ft_rotate_array(char **stack, char *cmd);
+int ft_revs_rotate_array(char **stack, char *cmd);
+int ft_push_elem(char **stack_a, char **stack_b, char *cmd);
+int	ft_revs_rotate_arrays(char **stack_a, char **stack_b);
+int	ft_rotate_arrays(char **stack_a, char **stack_b);
 
 // FT_SORT
 int ft_find_range1(int num, char **stack_b);
