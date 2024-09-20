@@ -6,7 +6,7 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:46:11 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:46:12 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/09/20 19:11:53 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_rotate_array(char **stack, char *cmd)
 		i++;
 	}
 	stack[i - 1] = cpy;
-	if(cmd)
+	if (cmd)
 		write(1, cmd, 3);
 	return (1);
 }
@@ -97,7 +97,7 @@ int	ft_revs_rotate_array(char **stack, char *cmd)
 		i--;
 	}
 	stack[0] = cpy;
-	if(cmd)
+	if (cmd)
 		write(1, cmd, 4);
 	return (1);
 }

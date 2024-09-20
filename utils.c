@@ -6,17 +6,17 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:46:14 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:46:15 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/09/20 19:13:48 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-char **char_tab(int ac, char **av)
+char	**char_tab(int ac, char **av)
 {
-	int i;
-	char **tmp;
+	int		i;
+	char	**tmp;
 
 	if (ac == 2)
 		tmp = ft_split(av[1], ' ');
@@ -38,9 +38,9 @@ char **char_tab(int ac, char **av)
 	return (tmp);
 }
 
-int ft_stack_len(char **stack)
+int	ft_stack_len(char **stack)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (stack[len] != 0)
@@ -48,9 +48,9 @@ int ft_stack_len(char **stack)
 	return (len);
 }
 
-int ft_find_position(int num, char **stack)
+int	ft_find_position(int num, char **stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ft_atoi(stack[i]) != num)
@@ -58,24 +58,24 @@ int ft_find_position(int num, char **stack)
 	return (i);
 }
 
-void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b, char c)
+void	ft_find_best_position(t_cmd *cmd_stc, char **a, char **b, char c)
 {
-	int i;
-	int range;
-	int cmd_count;
+	int	i;
+	int	range;
+	int	cmd_count;
 
 	i = 0;
 	cmd_count = 0;
-	while (i < ft_stack_len(stack_a))
+	while (i < ft_stack_len(a))
 	{
 		cmd_stc->a_pst = i;
-		cmd_calc(cmd_stc->a_pst, stack_a, 'a', cmd_stc);
-		if(c == 'b')
-			range = ft_find_range1(ft_atoi(stack_a[i]), stack_b);
+		cmd_calc(cmd_stc->a_pst, a, 'a', cmd_stc);
+		if (c == 'b')
+			range = ft_find_range1(ft_atoi(a[i]), b);
 		else
-			range = ft_find_range2(ft_atoi(stack_a[i]), stack_b);
-		cmd_stc->b_pst = ft_find_position(range, stack_b);
-		cmd_calc(cmd_stc->b_pst, stack_b, 'b', cmd_stc);
+			range = ft_find_range2(ft_atoi(a[i]), b);
+		cmd_stc->b_pst = ft_find_position(range, b);
+		cmd_calc(cmd_stc->b_pst, b, 'b', cmd_stc);
 		cmd_stc->cmd_count = cmd_calc2(cmd_stc);
 		if (cmd_count > cmd_stc->cmd_count || i == 0)
 		{
@@ -86,7 +86,7 @@ void ft_find_best_position(t_cmd *cmd_stc, char **stack_a, char **stack_b, char 
 		reset_cmd_struct(&cmd_stc);
 		i++;
 	}
-	cmd_calc(cmd_stc->top_a_pst, stack_a, 'a', cmd_stc);
-	cmd_calc(cmd_stc->top_b_pst, stack_b, 'b', cmd_stc);
+	cmd_calc(cmd_stc->top_a_pst, a, 'a', cmd_stc);
+	cmd_calc(cmd_stc->top_b_pst, b, 'b', cmd_stc);
 	cmd_calc2(cmd_stc);
 }
