@@ -6,18 +6,18 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:45:58 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:45:59 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/09/20 19:00:47 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int ft_fill_stack_a(int ac, char **av, t_stack *a)
+int	ft_fill_stack_a(int ac, char **av, t_stack *a)
 {
-	char **tmp;
-	int num;
-	int i;
+	char	**tmp;
+	int		num;
+	int		i;
 
 	tmp = char_tab(ac, av);
 	if (!tmp)
@@ -36,9 +36,9 @@ int ft_fill_stack_a(int ac, char **av, t_stack *a)
 	return (1);
 }
 
-int init_stack_struct(int ac, char **av, t_stack *a, t_stack *b)
+int	init_stack_struct(int ac, char **av, t_stack *a, t_stack *b)
 {
-	int len;
+	int	len;
 
 	if (ac == 2)
 		len = ft_strlen(av[1]);
@@ -57,7 +57,7 @@ int init_stack_struct(int ac, char **av, t_stack *a, t_stack *b)
 	return (1);
 }
 
-int init_cmd_struct(t_cmd **cmd)
+int	init_cmd_struct(t_cmd **cmd)
 {
 	*cmd = malloc(sizeof(t_cmd));
 	if (!cmd)
@@ -80,7 +80,7 @@ int init_cmd_struct(t_cmd **cmd)
 	return (1);
 }
 
-void reset_cmd_struct(t_cmd **cmd)
+void	reset_cmd_struct(t_cmd **cmd)
 {
 	(*cmd)->a_pst = 0;
 	(*cmd)->b_pst = 0;
