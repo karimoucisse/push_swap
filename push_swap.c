@@ -171,10 +171,10 @@ int main(int ac, char **av)
 	total = ft_sort_stack(stack_a, stack_b);
 	if (!total)
 		return (ft_print_error());
-	if(ft_sort_tester(stack_a->stack) && total < 700)
-		printf("yes yes\n");
+	if(ft_sort_tester(stack_a->stack) && ft_stack_len(stack_b->stack) == 0)
+		printf("OK\n");
 	else
-		printf("NO NO\n");
+		return (ft_print_error());
 	printf("Total = %d\n", total);
 	// printf("a	b\n\n");
 	// while (stack_a->stack[i] || stack_b->stack[i])
