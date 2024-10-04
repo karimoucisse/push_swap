@@ -6,7 +6,7 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:45:58 by kcisse            #+#    #+#             */
-/*   Updated: 2024/10/03 19:57:48 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/10/04 10:34:21 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,9 @@ int	ft_fill_stack_a(int ac, char **av, char **stack_a)
 	while (tmp[i])
 	{
 		num = ft_atoi(tmp[i]);
-		printf("num = %d, num2 = ", num);
 		stack_a[i] = ft_itoa(num);
-		if((stack_a[i][0] == '-' && tmp[i][0] != '-')
-			|| (stack_a[i][0] != '-' && tmp[i][0] == '-'))
+		if ((num == -2147483648 && tmp[i][0] != '-')
+			|| (num == 2147483647 && tmp[i][0] == '-'))
 			return (free_char(tmp));
 		if (stack_a[i] == NULL || stack_a == NULL)
 			return (free_char(tmp));

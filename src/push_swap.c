@@ -6,7 +6,7 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:45:13 by kcisse            #+#    #+#             */
-/*   Updated: 2024/10/03 20:25:48 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/10/04 10:45:55 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ int	ft_mini_sort(char **stack)
 	int	total;
 
 	total = 0;
-	if (ft_stack_len(stack) == 1)
-		return (0);
-	while (!ft_sort_tester(stack))
+	if (stack[0] > stack[1])
+		total += handle_case_1(stack);
+	else if (stack[0] < stack[1])
 	{
-		if (ft_atoi(stack[0]) > ft_atoi(stack[1]))
-			total += ft_swap_position(stack, "sa\n");
-		if (stack[2] && (ft_atoi(stack[0]) > ft_atoi(stack[2])))
+		if (stack[0] > stack[2])
 			total += ft_revs_rotate_array(stack, "rra\n");
-		if (stack[2] && (ft_atoi(stack[1]) > ft_atoi(stack[2])))
+		else if (stack[1] > stack[2])
+		{
+			total += ft_swap_position(stack, "sa\n");
 			total += ft_rotate_array(stack, "ra\n");
+		}
 	}
 	return (total);
 }
@@ -119,29 +120,3 @@ int	main(int ac, char **av)
 		free_chars(stack_a, stack_b, 0);
 	free_chars(stack_a, stack_b, 1);
 }
-
-// void	sort_three(t_node *stack_a)
-// {
-// 	if (stack_a->content > stack_a->next->content)
-// 	{
-// 		if (stack_a->content < stack_a->next->next->content)
-// 			execute(&stack_a, NULL, "sa", false);
-// 		else if (stack_a->next->content > stack_a->next->next->content)
-// 		{
-// 			execute(&stack_a, NULL, "sa", false);
-// 			execute(&stack_a, NULL, "rra", false);
-// 		}
-// 		else
-// 			execute(&stack_a, NULL, "ra", false);
-// 	}
-// 	else if (stack_a->content < stack_a->next->content)
-// 	{
-// 		if (stack_a->content > stack_a->next->next->content)
-// 			execute(&stack_a, NULL, "rra", false);
-// 		else if (stack_a->next->content > stack_a->next->next->content)
-// 		{
-// 			execute(&stack_a, NULL, "sa", false);
-// 			execute(&stack_a, NULL, "ra", false);
-// 		}
-// 	}
-// }

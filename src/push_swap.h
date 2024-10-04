@@ -6,7 +6,7 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:46:08 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/28 21:04:37 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/10/04 10:45:17 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		get_range(char c, int value, char **b);
 void	calculate(int *a, int *b, int *result);
 int		cmd_calc2(t_cmd *cmd_stc);
 int		ft_count_space(char *str);
+int		handle_case_1(char **stack);
 
 // SWAP CMD
 int		ft_swap_position(char **stack, char *cmd);
