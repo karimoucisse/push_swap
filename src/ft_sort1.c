@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort.c                                          :+:      :+:    :+:   */
+/*   ft_sort1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:45:46 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:58:43 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/09/29 19:22:41 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 #include "push_swap.h"
 
 void	ft_find_min_and_max(char **stack_b, int *min, int *max)
@@ -77,7 +77,7 @@ int	ft_find_range1(int num, char **stack_b)
 	return (min);
 }
 
-void	cmd_calc(int pst, char **stack, char l, t_cmd *cmd_stc)
+void	cmd_calc_a_to_b(int pst, char **stack, char l, t_cmd *cmd_stc)
 {
 	if (l == 'a')
 	{
@@ -99,32 +99,24 @@ void	cmd_calc(int pst, char **stack, char l, t_cmd *cmd_stc)
 	}
 }
 
-int	cmd_calc2(t_cmd *c)
+void	cmd_calc_b_to_a(int pst, char **stack, char l, t_cmd *cmd_stc)
 {
-	if (c->rb >= c->ra && c->ra != 0)
+	if (l == 'b')
 	{
-		c->rr = c->ra;
-		c->rb = c->rb - c->ra;
-		c->ra = 0;
+		if (pst == 0 || pst == 1)
+			cmd_stc->sb = pst;
+		else if (pst <= ft_stack_len(stack) / 2)
+			cmd_stc->rb = pst;
+		else
+			cmd_stc->rrb = ft_stack_len(stack) - pst;
 	}
-	if (c->ra > c->rb && c->rb != 0)
+	else
 	{
-		c->rr = c->rb;
-		c->ra = c->ra - c->rb;
-		c->rb = 0;
+		if (pst == 1)
+			cmd_stc->ra = 1;
+		else if (pst <= ft_stack_len(stack) / 2)
+			cmd_stc->ra = pst;
+		else
+			cmd_stc->rra = ft_stack_len(stack) - pst;
 	}
-	if (c->rrb >= c->rra && c->rra != 0)
-	{
-		c->rrr = c->rra;
-		c->rrb = c->rrb - c->rra;
-		c->rra = 0;
-	}
-	if (c->rra > c->rrb && c->rrb != 0)
-	{
-		c->rrr = c->rrb;
-		c->rra = c->rra - c->rrb;
-		c->rrb = 0;
-	}
-	return (c->rr + c->ra + c->rb + c->rrr + c->rra + c->rrb +
-		c->ss + c->sa + c->sb);
 }

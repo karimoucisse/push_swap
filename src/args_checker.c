@@ -6,11 +6,11 @@
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 18:45:20 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:55:21 by kcisse           ###   ########.fr       */
+/*   Updated: 2024/09/29 19:22:41 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft/libft.h"
 #include "push_swap.h"
 
 int	ft_check_espace(char *av, int ac)
@@ -69,6 +69,26 @@ int	ft_check_sign(char *av)
 		{
 			if (ft_strchr("0123456789", av[i - 1]))
 				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check_duplicate(char **stack)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (stack[i])
+	{
+		j = i + 1;
+		while (stack[j])
+		{
+			if (ft_atoi(stack[i]) == ft_atoi(stack[j]))
+				return (0);
+			j++;
 		}
 		i++;
 	}

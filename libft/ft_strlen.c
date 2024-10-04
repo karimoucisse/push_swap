@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_error.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kcisse <kcisse@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 18:45:53 by kcisse            #+#    #+#             */
-/*   Updated: 2024/09/20 18:59:16 by kcisse           ###   ########.fr       */
+/*   Created: 2024/05/18 00:37:02 by kcisse            #+#    #+#             */
+/*   Updated: 2024/09/29 19:51:21 by kcisse           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "push_swap.h"
 
-int	ft_print_error(void)
+size_t	ft_strlen(const char *str)
 {
-	write(2, "Error\n", 6);
-	return (1);
+	int	l;
+
+	l = 0;
+	if (!str)
+		return (0);
+	while (str[l])
+		l++;
+	return (l);
 }
